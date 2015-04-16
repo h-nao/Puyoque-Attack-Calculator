@@ -11,13 +11,21 @@
 	.input-label {
 		width:10em;
 	}
+	#reset-btn {
+		margin-right:1em;
+	}
 	</style>
 </head>
 <body role="document">
 	<div class="container" role="main">
 		<div class="panel panel-default">
-		<div class="panel-heading"><h3 class="panel-title">ぷよクエ攻撃力計算機</h3></div>
+		<div class="panel-heading">
+			<h3 class="panel-title">ぷよクエ攻撃力計算機</h3>
+		</div>
 		<div class="panel-body">
+			<div class="row">
+			<button id="reset-btn" class="btn btn-default btn-sm pull-right" type="button">リセット</button>
+			</div>
 			<div class="input-group input-group-sm">
 				<span class="input-group-addon input-label alert-info">攻撃力</span>
 				<input type="number" value="1000" class="form-control user-input" aria-label="攻撃力" id="attack-pw">

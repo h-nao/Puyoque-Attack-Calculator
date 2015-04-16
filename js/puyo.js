@@ -1,10 +1,58 @@
+var inputIds = [
+	"attack-pw",
+	"puyo-cnt",
+	"sep-cnt",
+	"conc",
+	"chain",
+	"l-skill",
+	"s-skill",
+	"tower",
+	"comb"
+];
+var defaultVals = {};
+
 $(function(){
+	cacheDefaultVals();
+	loadUserVals();
 	calc();
 });
 
 $(".user-input").change(function(){
 	calc();
+	saveUserVals();
 });
+
+$("#reset-btn").click(function(){
+	localStorage.clear();
+	resetVals();
+	calc();
+});
+
+function cacheDefaultVals() {
+	inputIds.forEach(function(inputid) {
+		defaultVals[inputid] = $("#" + inputid).val();
+	});
+}
+
+function resetVals() {
+	inputIds.forEach(function(inputid) {
+		$("#" + inputid).val(defaultVals[inputid]);
+	});
+}
+
+function saveUserVals() {
+	inputIds.forEach(function(inputid) {
+		localStorage[inputid] = $("#" + inputid).val();
+	});
+}
+
+function loadUserVals() {
+	inputIds.forEach(function(inputid) {
+		if(localStorage[inputid]) {
+			$("#" + inputid).val(localStorage[inputid]);
+		}
+	});
+}
 
 function calc() {
 	$("#tower-b").val(getTowerBounus($("#tower").val()));
